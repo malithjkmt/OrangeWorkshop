@@ -7,7 +7,6 @@ function appendEq(text){
 
 function clear(){
 	window.equation="";
-	window.result="";
 }
 
 function pressedButton(text){
@@ -16,7 +15,19 @@ function pressedButton(text){
 		document.getElementById('idresult').value=getResult();
 		clear();
 	}else{
-		document.getElementById('idresult').value=text;
+		if(document.getElementById('idresult').value=='0'){
+			document.getElementById('idresult').value=text;
+		}
+		else{
+			if(getResult()!=''){
+				document.getElementById('idresult').value=text;
+				window.result='';
+			}
+			else{
+				document.getElementById('idresult').value+=text;
+			}
+			
+		}
 		appendEq(text);
 	}
 }
